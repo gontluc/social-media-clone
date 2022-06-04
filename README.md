@@ -9,3 +9,19 @@ Social Media React App with Firebase
 image
 
 <br />
+
+## Features
+
+* Custom scroll bar
+
+<br />
+
+## Dependencies 
+
+react-router-dom
+
+(react-icons) still not
+
+<br />
+
+## React Hooks

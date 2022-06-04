@@ -1,0 +1,10 @@
+.dark-mode {
+    position: absolute;
+    right: 100px;
+    top: 20px;
+
+    width: 150px;
+    height: 60px;
+    background-color: #555;
+    border-radius: 30px;
+}
