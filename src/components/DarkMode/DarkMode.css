@@ -1,10 +1,32 @@
 .dark-mode {
     position: absolute;
-    right: 100px;
+    right: 70px;
     top: 20px;
 
-    width: 150px;
-    height: 60px;
+    width: 120px;
+    height: 55px;
     background-color: #555;
     border-radius: 30px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    transform: translateY(-200%);
+    animation: forwards 1s ease-in-out top-to-bottom;
+    animation-delay: 1.5s;
+}
+
+.icon {
+    color: #fff;
+    font-size: 1.9em;
+    padding: 8px;
+    border-radius: 200px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: .5 ease-in-out all;
+}
+
+.active {
+    background-color: var(--main-orange);
 }

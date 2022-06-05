@@ -14,29 +14,106 @@
 #first-page #box-div {
     width: 30%;
     height: 50%;
-    background-color: #fff;
+    background-color: var(--secondary-background);
     border-radius: 20px;
-    box-shadow: 5px 5px 5px #ccc;
+    box-shadow: 5px 5px 20px var(--main-shadow);
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    transition-timing-function: ease-in-out;
+    transition-duration: 1s;
+    transition-property: background-color color box-shadow;
+
+    transform: translateY(-150%);
+    animation: forwards 2s ease-in-out top-to-bottom;
 }
 
-#box-div .link {
+#title-div {
+    transform: translateX(-100%);
+    animation: forwards 1.5s ease-in-out left-to-right;
+}
+
+.link {
     margin: 20px;
     padding: 10px;
     color: #fff;
     border-radius: 20px;
+    outline: none;
+    border: 2px solid #333;
     width: 80%;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.link::before {
+    position: absolute;
+    content: '';
+    width: 1000px;
+    height: 1000px;
+    background-color: var(--secondary-background);
+    top: 200%;
+    right: 200%;
+    transform: rotate(45deg);
+    transition-duration: .9s;
+    transition-timing-function: ease;
+    transition-property: top right;
+    z-index: -1;
+}
+
+.link:hover::before{
+    top: -100%;
+    right: -100%;
 }
 
 .login {
     background-color: var(--main-orange);
+    border-color: var(--main-orange);
+}
+
+.login:hover {
+    color: var(--main-orange);
 }
 
 .create {
     background-color: var(--main-blue);
+    border-color: var(--main-blue);
+}
+
+.create:hover {
+    color: var(--main-blue);
+}
+
+@media (max-width: 900px) {
+    #first-page {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #title-div {
+        min-width: 550px;
+        margin: 40px;
+    }
+
+    #box-div {
+        min-width: 300px;
+        margin: 20px;
+        max-height: 40%;
+    }
+}
+
+@media (max-width: 700px) {
+
+    #title-div {
+        min-width: 60%;
+    }
+
+    #box-div {
+        max-width: 60%;
+        margin-top: 0;
+    }
 }
