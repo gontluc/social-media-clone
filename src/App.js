@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import FirstPage from "./components/FirstPage/FirstPage";
 import DarkMode from './components/DarkMode/DarkMode';
+import Home from './components/Home/Home';
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
   const onDarkModeToggle = () => {
     // Fixing transition animation (background, background-color)
     document.querySelector('body').style = 'transition-property: color background-color'
-    document.querySelector('body').style = 'transition-timing-function: ease-in-out'
+    document.querySelector('body').style = 'transition-timing-function: ease'
     document.querySelector('body').style = 'transition-duration: 1s'
 
     setDarkMode(!darkMode)
@@ -31,7 +32,7 @@ function App() {
 
       <Route path='/home' exact element={
         <>
-          HOME
+          <Home darkMode={darkMode} onDarkModeToggle={onDarkModeToggle}/>
         </>
       }/>
       

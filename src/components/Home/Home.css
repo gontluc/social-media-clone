@@ -1,0 +1,110 @@
+.navbar {
+    position: fixed;
+    top: 15px;
+    left: 300px;
+    right: 300px;
+    border-radius: 20px;
+    height: 10vh;
+    background-color: var(--secondary-background);
+
+    z-index: 10;
+}
+
+.invisible-div {
+    background-color: var(--main-background);
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    height: calc(5vh + 15px);
+    width: 100vw;
+
+    transition: background-color ease 1s;
+}
+
+.profile-div {
+    position: fixed;
+    top: 15px;
+    bottom: 15px;
+    left: 15px;
+    background-color: var(--secondary-background);
+    border-radius: 20px;
+    width: 20vw;
+
+    z-index: 10;
+}
+
+.friends-div {
+    position: fixed;
+    top: 15vh;
+    bottom: 15px;
+    right: 15px;
+    background-color: var(--secondary-background);
+    border-radius: 20px;
+    width: 20vw;
+    
+    z-index: 10;
+}
+
+.content-div {
+    margin: 0 300px;
+    margin-top: 15vh;
+    background-color: var(--secondary-background);
+    border-radius: 20px;
+
+    /* Erase this when working with content-div, not important */
+    height: 185vh;
+    margin-bottom: 250px;
+    /*  */
+
+    z-index: 1;
+}
+
+.top-div {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    right: 0px;
+    border-bottom: 2px solid var(--main-background);
+    height: 8vh;
+    background-color: var(--secondary-background);
+
+    z-index: 10;
+
+    transition: border-color 1s ease;
+}
+
+@media (max-width: 1024px) {
+    .profile-div {
+        display: none;
+    }
+
+    .friends-div {
+        display: none;
+    }
+
+    .invisible-div {
+        display: none;
+    }
+
+    .navbar {
+        top: auto;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        border-radius: 0px;
+        border-top: 2px solid var(--main-background);
+        height: 8vh;
+
+        transition: border-color 1s ease;
+    }
+
+    .content-div {
+        margin: 0px;
+        border-radius: 0px;
+    }
+
+    .top-div {
+        display: block;
+    }
+}

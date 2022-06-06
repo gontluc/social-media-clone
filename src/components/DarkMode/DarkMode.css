@@ -17,6 +17,11 @@
     animation-delay: 1.5s;
 }
 
+.dark-mode-home {
+    position: fixed;
+    z-index: 10;
+}
+
 .icon {
     color: #fff;
     font-size: 1.9em;
@@ -29,4 +34,10 @@
 
 .active {
     background-color: var(--main-orange);
+}
+
+@media (max-width: 1024px) {
+    .dark-mode-home {
+        display: none;
+    }
 }

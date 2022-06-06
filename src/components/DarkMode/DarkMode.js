@@ -5,6 +5,7 @@ import {
   BsMoon as Moon, 
   BsMoonFill as MoonFill 
 } from 'react-icons/bs'
+import { useLocation } from 'react-router-dom'
 
 const DarkMode = ({ darkMode, onToggle }) => {
 
@@ -26,8 +27,10 @@ const DarkMode = ({ darkMode, onToggle }) => {
     )
   }
 
+  const location = useLocation()
+
   return (
-    <div className='dark-mode'>
+    <div className={`dark-mode ${location.pathname === '/home' && 'dark-mode-home'}`}>
       {darkMode ? modeActivated() : modeDeactivated()}
     </div>
   )

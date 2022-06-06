@@ -35,10 +35,6 @@ a {
   text-decoration: none;
 }
 
-a:visited {
-  color: blue;
-}
-
 a:hover {
   cursor: pointer;
 }
