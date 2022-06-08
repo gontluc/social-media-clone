@@ -1,0 +1,20 @@
+.settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.settings:hover {
+    color: var(--main-orange);
+}
+
+.settings-icon {
+    margin: 10px;
+    transition: transform .8s ease-in-out;
+}
+
+.hovering-settings-icon {
+    transform: rotate(360deg);
+}

@@ -1,28 +1,3 @@
-.navbar {
-    position: fixed;
-    top: 15px;
-    left: 300px;
-    right: 300px;
-    border-radius: 20px;
-    height: 10vh;
-    background-color: var(--secondary-background);
-    transition: background-color 1s ease;
-
-    z-index: 10;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#logo {
-    max-width: 60px;
-    margin-left: 10px;
-
-    transition: filter ease 1s;
-    filter: invert(var(--main-invert-logo));
-}
-
 .invisible-div {
     background-color: var(--main-background);
     position: fixed;
@@ -32,19 +7,6 @@
     width: 100vw;
 
     transition: background-color ease 1s;
-}
-
-.profile-div {
-    position: fixed;
-    top: 15px;
-    bottom: 15px;
-    left: 15px;
-    background-color: var(--secondary-background);
-    border-radius: 20px;
-    width: 20vw;
-    transition: background-color 1s ease;
-
-    z-index: 10;
 }
 
 .friends-div {
@@ -93,9 +55,6 @@
 }
 
 @media (max-width: 1024px) {
-    .profile-div {
-        display: none;
-    }
 
     .friends-div {
         display: none;
@@ -103,18 +62,6 @@
 
     .invisible-div {
         display: none;
-    }
-
-    .navbar {
-        top: auto;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        border-radius: 0px;
-        border-top: 2px solid var(--main-background);
-        height: 8vh;
-
-        transition: border-color 1s ease;
     }
 
     .content-div {

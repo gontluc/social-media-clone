@@ -1,13 +1,13 @@
 import './Home.css'
 import DarkMode from '../DarkMode/DarkMode'
+import Navbar from './Navbar/Navbar'
+import Profile from './Profile/Profile'
+import AddPost from './AddPost/AddPost'
 
 const Home = ({ darkMode, onDarkModeToggle }) => {
   return (
     <>
-        <div className="navbar">
-            <img src="logo.png" alt="logo" id='logo'/>
-            Navbar
-        </div>
+        <Navbar />
 
         {/* To remove background content when scrolling */}
         <div className="invisible-div"></div>
@@ -19,9 +19,7 @@ const Home = ({ darkMode, onDarkModeToggle }) => {
 
         <DarkMode darkMode={darkMode} onToggle={onDarkModeToggle}/>
 
-        <div className="profile-div">
-            Profile
-        </div>
+        <Profile />
 
         <div className="friends-div">
             Friends
@@ -30,6 +28,9 @@ const Home = ({ darkMode, onDarkModeToggle }) => {
         <div className="content-div">
             Content
         </div>
+
+        <AddPost />
+
     </>
   )
 }

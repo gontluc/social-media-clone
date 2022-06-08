@@ -1,0 +1,67 @@
+.navbar {
+    position: fixed;
+    top: 15px;
+    left: 300px;
+    right: 300px;
+    border-radius: 20px;
+    height: 10vh;
+    background-color: var(--secondary-background);
+    transition: background-color 1s ease;
+
+    z-index: 10;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: visible;
+}
+
+#nav-logo {
+    max-width: 60px;
+    margin: 10px;
+
+    transition: filter ease 1s;
+    filter: invert(var(--main-invert-logo));
+}
+
+.home-icon {
+    font-size: xx-large;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+    color: var(--main-text);
+    border-bottom: 4px solid transparent;
+    
+    transition-duration: .5s;
+    transition-timing-function: ease;
+    transition-property: color border-color;
+    box-sizing: content-box;
+    padding: 8px 60px;
+    padding-top: 20px;
+}
+
+.home-icon:hover {
+    color: var(--main-orange);
+    transform: scale(110%);
+    border-bottom: 4px solid var(--main-orange);
+    border-radius: 5px;
+}
+
+.searchbar {
+    margin: 10px;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        top: auto;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        border-radius: 0px;
+        border-top: 2px solid var(--main-background);
+        height: 8vh;
+
+        transition: border-color 1s ease;
+    }
+}

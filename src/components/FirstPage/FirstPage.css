@@ -11,8 +11,8 @@
     color: var(--main-orange);
 }
 
-#first-page #logo {
-    min-width: 15vw;
+#comulle-logo {
+    max-width: 15vw;
     transform: translateX(20%);
     
     transition: filter ease 1s;
@@ -114,7 +114,7 @@
         max-height: 40%;
     }
 
-    #logo {
+    #comulle-logo {
         min-width: 20vw;
         transform: translateX(0);
     }
@@ -131,7 +131,7 @@
         margin-top: 0;
     }
 
-    #logo {
+    #comulle-logo {
         min-width: 25vw;
     }
 }

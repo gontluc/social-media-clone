@@ -1,11 +1,12 @@
 import './FirstPage.css'
 import { Link } from 'react-router-dom'
+import comulleLogo from '../../images/logo.png'
 
 const FirstPage = () => {
   return (
     <div id='first-page'>
         <div id='title-div'>
-          <img src="logo.png" alt="logo" id='logo'/>
+          <img src={comulleLogo} alt="logo" id='comulle-logo'/>
           
           <h1>Social Comulle</h1>
           
