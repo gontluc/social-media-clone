@@ -5,9 +5,11 @@ const FirstPage = () => {
   return (
     <div id='first-page'>
         <div id='title-div'>
-            <h5>Social Media</h5>
-            <h1>Social Comulle</h1>
-            <p>What are you waiting for? Let's connect!</p>
+          <img src="logo.png" alt="logo" id='logo'/>
+          
+          <h1>Social Comulle</h1>
+          
+          <p>What are you waiting for? Let's connect!</p>
         </div>
         <div id='box-div'>
             <Link to={'/home'} className='link login'>Log in</Link>

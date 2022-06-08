@@ -14,6 +14,7 @@ html {
   --secondary-background: #fff;
   --main-text: #333;
   --main-shadow: #ccc;
+  --main-invert-logo: 0;
 }
 
 [data-theme='dark'] {
@@ -21,6 +22,7 @@ html {
   --secondary-background: #333;
   --main-text: #fff;
   --main-shadow: #222;
+  --main-invert-logo: 100%;
 }
 
 body {

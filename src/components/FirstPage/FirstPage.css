@@ -11,6 +11,14 @@
     color: var(--main-orange);
 }
 
+#first-page #logo {
+    min-width: 15vw;
+    transform: translateX(20%);
+    
+    transition: filter ease 1s;
+    filter: invert(var(--main-invert-logo));
+}
+
 #first-page #box-div {
     width: 30%;
     height: 50%;
@@ -32,6 +40,7 @@
 }
 
 #title-div {
+    margin-bottom: 150px;
     transform: translateX(-100%);
     animation: forwards 1.5s ease-in-out left-to-right;
 }
@@ -104,6 +113,11 @@
         margin: 20px;
         max-height: 40%;
     }
+
+    #logo {
+        min-width: 20vw;
+        transform: translateX(0);
+    }
 }
 
 @media (max-width: 700px) {
@@ -115,5 +129,9 @@
     #box-div {
         max-width: 60%;
         margin-top: 0;
+    }
+
+    #logo {
+        min-width: 25vw;
     }
 }

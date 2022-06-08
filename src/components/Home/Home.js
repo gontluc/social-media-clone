@@ -5,6 +5,7 @@ const Home = ({ darkMode, onDarkModeToggle }) => {
   return (
     <>
         <div className="navbar">
+            <img src="logo.png" alt="logo" id='logo'/>
             Navbar
         </div>
 
