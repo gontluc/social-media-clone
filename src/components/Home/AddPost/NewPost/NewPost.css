@@ -1,0 +1,42 @@
+.new-post {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.473);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    cursor: default;
+
+    animation: 1s ease-in-out appears-opacity;
+}
+
+.new-post-div {
+    width: 50%;
+    height: 50%;
+    background-color: var(--secondary-background);
+    color: var(--main-text);
+    border-radius: 20px;
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.close-icon {
+    font-size: x-large;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .new-post-div {
+        width: 70%;
+        height: 60%;
+    }
+}

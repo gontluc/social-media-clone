@@ -60,20 +60,40 @@ a:hover {
 
 @keyframes top-to-bottom {
   from {
-      transform: translateY(-200%);
+    transform: translateY(-200%);
   }
 
   to {
-      transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes left-to-right {
   from {
-      transform: translateX(-200%);
+    transform: translateX(-200%);
   }
 
   to {
-      transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes appears-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bottom-to-top {
+  from {
+    transform: translateY(200%);
+  }
+
+  to {
+    transform: translateY(0);
   }
 }
