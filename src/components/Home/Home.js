@@ -3,6 +3,7 @@ import DarkMode from '../DarkMode/DarkMode'
 import Navbar from './Navbar/Navbar'
 import Profile from './Profile/Profile'
 import AddPost from './AddPost/AddPost'
+import Friends from './Friends/Friends'
 
 const Home = ({ darkMode, onDarkModeToggle }) => {
   return (
@@ -21,9 +22,7 @@ const Home = ({ darkMode, onDarkModeToggle }) => {
 
         <Profile />
 
-        <div className="friends-div">
-            Friends
-        </div>
+        <Friends />
 
         <div className="content-div">
             Content

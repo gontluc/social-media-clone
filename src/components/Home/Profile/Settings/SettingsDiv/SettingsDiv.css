@@ -1,0 +1,25 @@
+.settings-div {
+    position: fixed;
+    top: 270px;
+    left: 15px;
+    width: 20vw;
+    height: 200px;
+    background-color: var(--main-orange);
+    color: var(--main-text);
+    border-radius: 20px;
+    padding: 20px;
+    cursor: default;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.settings-div .item {
+    cursor: pointer;
+}
+
+.settings-div .item:hover{
+    color: var(--secondary-background);
+}

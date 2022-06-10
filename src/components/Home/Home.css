@@ -9,19 +9,6 @@
     transition: background-color ease 1s;
 }
 
-.friends-div {
-    position: fixed;
-    top: 15vh;
-    bottom: 15px;
-    right: 15px;
-    background-color: var(--secondary-background);
-    border-radius: 20px;
-    width: 20vw;
-    transition: background-color 1s ease;
-    
-    z-index: 10;
-}
-
 .content-div {
     margin: 0 300px;
     margin-top: 15vh;
