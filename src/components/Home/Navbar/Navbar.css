@@ -29,7 +29,6 @@
     font-size: xx-large;
     margin: 10px;
     cursor: pointer;
-    position: relative;
     color: var(--main-text);
     border-bottom: 4px solid transparent;
     
@@ -46,10 +45,6 @@
     transform: scale(110%);
     border-bottom: 4px solid var(--main-orange);
     border-radius: 5px;
-}
-
-.searchbar {
-    margin: 10px;
 }
 
 @media (max-width: 1024px) {

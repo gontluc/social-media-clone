@@ -16,7 +16,7 @@
     width: 20vw;
     height: 200px;
     background-color: var(--main-orange);
-    color: var(--main-text);
+    color: var(--secondary-background);
     border-radius: 20px;
     padding: 20px;
 
@@ -31,5 +31,5 @@
 }
 
 .settings-div .item:hover{
-    color: var(--secondary-background);
+    color: var(--main-text);
 }

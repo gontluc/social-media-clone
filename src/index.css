@@ -97,3 +97,13 @@ a:hover {
     transform: translateY(0);
   }
 }
+
+@keyframes searchbar-animation {
+  from {
+    width: 112px;
+  }
+
+  to {
+    width: 250px;
+  }
+}
