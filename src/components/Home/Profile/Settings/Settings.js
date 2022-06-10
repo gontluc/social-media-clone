@@ -9,15 +9,19 @@ const Settings = () => {
 
   return (
     <div 
-        className="settings" 
-        onMouseOver={() => setHovering(!hovering)} 
-        onMouseLeave={() => setHovering(!hovering)}
-        onClick={() => setClickSettings(!clickSettings)}
+      className="settings" 
+      onMouseOver={() => setHovering(!hovering)} 
+      onMouseLeave={() => setHovering(!hovering)}
+      onClick={(e) => {
+        e.target === e.currentTarget && setClickSettings(!clickSettings)
+      }}
     >
-        <SettingsIcon className={`settings-icon ${hovering && 'hovering-settings-icon'}`}/>
-        Settings
+      <SettingsIcon className={`settings-icon ${hovering && 'hovering-settings-icon'}`}/>
+      Settings
 
-        { clickSettings && <SettingsDiv />}
+      { clickSettings 
+        && <SettingsDiv clickSettings={clickSettings} setClickSettings={setClickSettings}/>
+      }
     </div>
   )
 }

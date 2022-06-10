@@ -1,3 +1,14 @@
+.settings-parent-div {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: default;
+}
+
 .settings-div {
     position: fixed;
     top: 270px;
@@ -8,7 +19,6 @@
     color: var(--main-text);
     border-radius: 20px;
     padding: 20px;
-    cursor: default;
 
     display: flex;
     align-items: center;

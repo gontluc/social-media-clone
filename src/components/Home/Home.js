@@ -20,8 +20,6 @@ const Home = ({ darkMode, onDarkModeToggle }) => {
 
         <DarkMode darkMode={darkMode} onToggle={onDarkModeToggle}/>
 
-        <Profile />
-
         <Friends />
 
         <div className="content-div">
@@ -29,6 +27,8 @@ const Home = ({ darkMode, onDarkModeToggle }) => {
         </div>
 
         <AddPost />
+
+        <Profile />
 
     </>
   )
