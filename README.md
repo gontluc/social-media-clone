@@ -29,3 +29,4 @@ react-icons
 ## React Hooks
 
 useState()
+useEffect()
