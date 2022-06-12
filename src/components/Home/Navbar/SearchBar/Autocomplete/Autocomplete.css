@@ -1,0 +1,18 @@
+.autocomplete {
+    position: absolute;
+    top: 38px;
+    left: -2px;
+    width: 20vw;
+    background-color: var(--secondary-background);
+    color: var(--main-text);
+    border: 2px var(--main-text) solid;
+    height: 50vh;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+
+    transition-property: background-color color border-color;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+}

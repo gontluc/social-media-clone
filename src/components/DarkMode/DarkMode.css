@@ -36,7 +36,7 @@
     background-color: var(--main-orange);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
     .dark-mode-home {
         display: none;
     }
