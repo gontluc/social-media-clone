@@ -16,3 +16,25 @@
     transition-duration: 1s;
     transition-timing-function: ease;
 }
+
+.autocomplete p {
+    margin: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+    background-color: var(--main-background);
+}
+
+@media (max-width: 1100px) {
+    .autocomplete {
+        top: auto;
+        bottom: 38px;
+        width: 40vw;
+
+        border: 2px var(--main-text) solid;
+        border-radius: 20px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: none;
+    }
+}

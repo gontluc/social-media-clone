@@ -107,3 +107,23 @@ a:hover {
     width: 20vw;
   }
 }
+
+@keyframes searchbar-animation-2 {
+  from {
+    width: 112px;
+  }
+
+  to {
+    width: 40vw;
+  }
+}
+
+@keyframes searchbar-animation-3 {
+  from {
+    width: 32px;
+  }
+
+  to {
+    width: 50vw;
+  }
+}

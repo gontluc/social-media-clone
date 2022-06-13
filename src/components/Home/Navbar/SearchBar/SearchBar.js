@@ -3,15 +3,15 @@ import { MdPersonSearch as SearchIcon } from 'react-icons/md'
 import { GoSearch as SearchIconActive } from 'react-icons/go'
 import { useState } from 'react'
 import Autocomplete from './Autocomplete/Autocomplete'
+import AutocompleteResponsive from './AutocompleteResponsive/AutocompleteResponsive'
 
 const SearchBar = () => {
     const [activeSearch, setActiveSearch] = useState(false)
     const [activeAutocomplete, setActiveAutocomplete] = useState(false)
 
-  return (
-    <div className="searchbar">
-        {activeSearch 
-            ? <div className={
+    const clickWithBigWidth = () => {
+        return (
+            <div className={
                 `search-active-div ${activeAutocomplete && 'search-active-div-autocomplete'}`
             }>
                 <SearchIconActive className='search-active'/>
@@ -30,11 +30,47 @@ const SearchBar = () => {
                 </form>
                 {activeAutocomplete && <Autocomplete />}
             </div>
-            
-            : <SearchIcon 
+        )
+    }
+
+    const clickWithSmallWidth = () => {
+        return (
+            <>
+                <SearchIcon 
+                    className='search-icon' 
+                    onClick={() => {
+                        setActiveSearch(!activeSearch)
+                        setActiveAutocomplete(!activeAutocomplete)
+                    }}
+                />
+
+                {activeSearch && <AutocompleteResponsive 
+                    activeAutocomplete={activeAutocomplete}
+                    setActiveAutocomplete={setActiveAutocomplete}
+                    activeSearch={activeSearch}
+                    setActiveSearch={setActiveSearch}
+                />}
+                
+            </>
+        )
+    }
+
+    const noClick = () => {
+        return (
+            <SearchIcon 
                 className='search-icon' 
                 onClick={() => setActiveSearch(!activeSearch)}
             />
+        )
+    }   
+
+  return (
+    <div className="searchbar">
+        {activeSearch & window.innerWidth > 800
+            ? clickWithBigWidth()
+            : activeSearch & window.innerWidth <= 800 
+                ? clickWithSmallWidth()
+                : noClick()
         }
     </div>
   )
