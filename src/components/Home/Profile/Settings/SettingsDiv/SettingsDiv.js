@@ -1,6 +1,6 @@
 import './SettingsDiv.css'
 
-const SettingsDiv = ({ clickSettings, setClickSettings }) => {
+const SettingsDiv = ({ clickSettings, setClickSettings, SignOut }) => {
   return (
     <div 
       className='settings-parent-div'
@@ -9,7 +9,7 @@ const SettingsDiv = ({ clickSettings, setClickSettings }) => {
       }}
     >
       <div className="settings-div">
-        <p className='item'>Log out</p>
+        <SignOut />
         <p className='item'>Delete post</p>
         <p className='item'>Delete account</p>
       </div>

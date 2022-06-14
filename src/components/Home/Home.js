@@ -1,5 +1,4 @@
 import './Home.css'
-import DarkMode from '../DarkMode/DarkMode'
 import Navbar from './Navbar/Navbar'
 import Profile from './Profile/Profile'
 import AddPost from './AddPost/AddPost'
@@ -7,7 +6,7 @@ import Friends from './Friends/Friends'
 import { useState, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 
-const Home = ({ darkMode, onDarkModeToggle }) => {
+const Home = ({ SignOut }) => {
   const [loadingHome, setLoadingHome] = useState(true)
 
   useEffect(() => {
@@ -31,8 +30,6 @@ const Home = ({ darkMode, onDarkModeToggle }) => {
               Top Div
           </div>
 
-          <DarkMode darkMode={darkMode} onToggle={onDarkModeToggle}/>
-
           <Friends />
 
           <div className="content-div">
@@ -41,7 +38,7 @@ const Home = ({ darkMode, onDarkModeToggle }) => {
 
           <AddPost />
 
-          <Profile />
+          <Profile SignOut={SignOut}/>
         </>}
 
     </>

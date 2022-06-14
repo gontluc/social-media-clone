@@ -1,10 +1,10 @@
 import './FirstPage.css'
-import { Link } from 'react-router-dom'
 import comulleLogo from '../../images/logo.png'
 import { useState, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 
-const FirstPage = () => {
+
+const FirstPage = ({ SignIn }) => {
   const [loadingFirstPage, setLoadingFirstPage] = useState(true)
 
   useEffect(() => {
@@ -25,8 +25,8 @@ const FirstPage = () => {
             <p>What are you waiting for? Let's connect!</p>
           </div>
           <div id='box-div'>
-              <Link to={'/home'} className='link login'>Log in</Link>
-              <Link to={'/home'} className='link create'>Create new account</Link>
+              <SignIn />
+              <div className='link create'>Create new account</div>
           </div>
       </div>
   )

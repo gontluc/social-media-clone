@@ -3,7 +3,7 @@ import { IoSettingsSharp as SettingsIcon} from 'react-icons/io5'
 import { useState } from 'react'
 import SettingsDiv from './SettingsDiv/SettingsDiv'
 
-const Settings = () => {
+const Settings = ({ SignOut }) => {
     const [hovering, setHovering] = useState(false)
     const [clickSettings, setClickSettings] = useState(false)
 
@@ -20,7 +20,11 @@ const Settings = () => {
       Settings
 
       { clickSettings 
-        && <SettingsDiv clickSettings={clickSettings} setClickSettings={setClickSettings}/>
+        && <SettingsDiv 
+          clickSettings={clickSettings} 
+          setClickSettings={setClickSettings}
+          SignOut={SignOut}
+        />
       }
     </div>
   )

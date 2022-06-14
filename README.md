@@ -20,9 +20,13 @@ image
 
 ## Dependencies 
 
-react-router-dom
+react-router-dom (removed)
 
 react-icons
+
+firebase
+
+react-firebase-hooks
 
 <br />
 
@@ -30,3 +34,9 @@ react-icons
 
 useState()
 useEffect()
+
+<br />
+
+## Backend
+
+Firebase --> Cloud Firestore
