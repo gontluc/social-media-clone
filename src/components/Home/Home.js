@@ -4,31 +4,45 @@ import Navbar from './Navbar/Navbar'
 import Profile from './Profile/Profile'
 import AddPost from './AddPost/AddPost'
 import Friends from './Friends/Friends'
+import { useState, useEffect } from 'react'
+import Loading from '../Loading/Loading'
 
 const Home = ({ darkMode, onDarkModeToggle }) => {
+  const [loadingFirstPage, setLoadingFirstPage] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadingFirstPage(false)
+    }, 1100);
+  }, [])
+
   return (
     <>
-        <Navbar />
+      {loadingFirstPage
+        ? <Loading />
+        : <>
+          <Navbar />
 
-        {/* To remove background content when scrolling */}
-        <div className="invisible-div"></div>
+          {/* To remove background content when scrolling */}
+          <div className="invisible-div"></div>
 
-        {/* For mobile */}
-        <div className="top-div">
-            Top Div
-        </div>
+          {/* For mobile */}
+          <div className="top-div">
+              Top Div
+          </div>
 
-        <DarkMode darkMode={darkMode} onToggle={onDarkModeToggle}/>
+          <DarkMode darkMode={darkMode} onToggle={onDarkModeToggle}/>
 
-        <Friends />
+          <Friends />
 
-        <div className="content-div">
-            Content
-        </div>
+          <div className="content-div">
+              Content
+          </div>
 
-        <AddPost />
+          <AddPost />
 
-        <Profile />
+          <Profile />
+        </>}
 
     </>
   )

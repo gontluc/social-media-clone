@@ -14,7 +14,7 @@
 
     transform: translateY(-200%);
     animation: forwards 1s ease-in-out top-to-bottom;
-    animation-delay: 1.5s;
+    animation-delay: 2s;
 }
 
 .dark-mode-home {

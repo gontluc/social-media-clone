@@ -1,0 +1,29 @@
+.loading-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+    width: 100vw;
+    height: 100vh;
+}
+  
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    height: 4vh;
+    background-color: var(--main-text);
+    border-radius: 20px;
+    border: 3px var(--main-text) solid;
+    overflow: hidden;
+}
+  
+.loading-inside {
+    width: 30vw;
+    height: 4vh;
+    background-color: var(--main-orange);
+    border-radius: 20px;
+
+    animation: .9s forwards ease-in-out loading-animation;
+}

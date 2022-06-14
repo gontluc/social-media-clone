@@ -2,16 +2,8 @@ import './AutocompleteResponsive.css'
 import { BiArrowBack as BackIcon } from 'react-icons/bi'
 
 const AutocompleteResponsive = ({ 
-  activeAutocomplete, setActiveAutocomplete, activeSearch, setActiveSearch
+  activeAutocomplete, setActiveAutocomplete, activeSearch, setActiveSearch, autocompleteResults
 }) => {
-
-  const autocompleteResults = () => {
-    return (<>
-      <p className='item'>Autocomplete1</p>
-      <p className='item'>Autocomplete2</p>
-      <p className='item'>Autocomplete3</p>
-    </>)
-  }
 
   return (
     <div className='autocomplete-responsive'>

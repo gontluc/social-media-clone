@@ -28,7 +28,10 @@ const SearchBar = () => {
                         }}
                     />
                 </form>
-                {activeAutocomplete && <Autocomplete />}
+                {activeAutocomplete && <Autocomplete 
+                    autocompleteResults={autocompleteResults}
+                    autocompleteClass={'autocomplete'}
+                />}
             </div>
         )
     }
@@ -49,6 +52,7 @@ const SearchBar = () => {
                     setActiveAutocomplete={setActiveAutocomplete}
                     activeSearch={activeSearch}
                     setActiveSearch={setActiveSearch}
+                    autocompleteResults={autocompleteResults}
                 />}
                 
             </>
@@ -62,7 +66,17 @@ const SearchBar = () => {
                 onClick={() => setActiveSearch(!activeSearch)}
             />
         )
-    }   
+    }
+    
+    const autocompleteResults = () => {
+        return (
+        <>
+          <div className='item'>Autocomplete1</div>
+          <div className='item'>Autocomplete2</div>
+          <div className='item'>Autocomplete3</div>
+        </>
+        )
+    }
 
   return (
     <div className="searchbar">

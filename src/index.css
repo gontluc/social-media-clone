@@ -58,6 +58,17 @@ a:hover {
   background: var(--main-orange);
 }
 
+@keyframes loading-animation {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 30vw;
+  }
+}
+
+
 @keyframes top-to-bottom {
   from {
     transform: translateY(-200%);

@@ -17,7 +17,7 @@
     transition-timing-function: ease;
 }
 
-.autocomplete p {
+.autocomplete .item {
     margin: 15px;
     margin-bottom: 20px;
     padding-bottom: 30px;

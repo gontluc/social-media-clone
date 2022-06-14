@@ -1,11 +1,9 @@
 import './Autocomplete.css'
 
-const Autocomplete = () => {
+const Autocomplete = ({ autocompleteResults, autocompleteClass }) => {
   return (
-    <div className='autocomplete'>
-        <p>Autocomplete1</p>
-        <p>Autocomplete2</p>
-        <p>Autocomplete3</p>
+    <div className={autocompleteClass}>
+        {autocompleteResults()}
     </div>
   )
 }
