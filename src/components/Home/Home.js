@@ -8,17 +8,17 @@ import { useState, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 
 const Home = ({ darkMode, onDarkModeToggle }) => {
-  const [loadingFirstPage, setLoadingFirstPage] = useState(true)
+  const [loadingHome, setLoadingHome] = useState(true)
 
   useEffect(() => {
     setTimeout(() => {
-      setLoadingFirstPage(false)
+      setLoadingHome(false)
     }, 1100);
   }, [])
 
   return (
     <>
-      {loadingFirstPage
+      {loadingHome
         ? <Loading />
         : <>
           <Navbar />
