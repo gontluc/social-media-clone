@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="navbar">
         <img src={navLogo} alt="logo" id='nav-logo'/>
 
-        <HomeIcon className='home-icon'/>
+        <HomeIcon className='home-icon' onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}/>
         
         <SearchBar />
     </div>

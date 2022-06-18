@@ -9,21 +9,6 @@
     transition: background-color ease 1s;
 }
 
-.content-div {
-    margin: 0 300px;
-    margin-top: 15vh;
-    background-color: var(--secondary-background);
-    border-radius: 20px;
-    transition: background-color 1s ease;
-
-    /* Erase this when working with content-div, not important */
-    height: 185vh;
-    margin-bottom: 250px;
-    /*  */
-
-    z-index: 1;
-}
-
 .top-div {
     display: none;
     position: fixed;
@@ -49,11 +34,6 @@
 
     .invisible-div {
         display: none;
-    }
-
-    .content-div {
-        margin: 0px;
-        border-radius: 0px;
     }
 
     .top-div {

@@ -13,7 +13,7 @@
     opacity: 1;
     cursor: default;
 
-    animation: 1s ease-in-out appears-opacity;
+    animation: .3s ease-in-out appears-opacity;
 }
 
 .new-post-div {

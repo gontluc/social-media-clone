@@ -1,0 +1,101 @@
+.post:first-child {
+    padding-top: 0;
+}
+
+.post:last-child {
+    padding-bottom: 0;
+    border: none;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+
+    padding: 40px 0;
+    border-bottom: 1px #bbb solid;
+}
+
+.top-post {
+    display: flex;
+}
+
+.name-username {
+    display: flex;
+}
+
+.like-comments {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.google-profile-img {
+    min-width: 100px;
+    width: 100px;
+    min-height: 100px;
+    height: 100px;
+    border-radius: 200px;
+}
+
+.text-div {
+    margin-left: 25px;
+}
+
+.post .username {
+    margin-left: 15px;
+}
+
+.comments {
+    margin-left: 20px;
+    font-size: x-large;
+    cursor: pointer;
+    color: var(--main-blue);
+}
+
+.number-comments {
+    margin-left: 10px;
+}
+
+.post-text {
+    margin-top: 15px;
+}
+
+.not-like {
+    font-size: x-large;
+    cursor: pointer;
+}
+
+.not-like:hover {
+    transform: scale(110%);
+}
+
+.not-like:active {
+    transform: scale(90%);
+}
+
+.like {
+    font-size: x-large;
+    cursor: pointer;
+    color: red;
+}
+
+.like:hover {
+    transform: scale(110%);
+}
+
+.like:active {
+    transform: scale(90%);
+}
+
+.number-likes {
+    margin-left: 10px;
+}
+
+.comments:hover {
+    transform: scale(110%);
+}
+
+.comments:active {
+    transform: scale(90%);
+}

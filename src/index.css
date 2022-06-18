@@ -41,6 +41,10 @@ a:hover {
   cursor: pointer;
 }
 
+img {
+  image-rendering: auto;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -56,6 +60,31 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--main-orange);
+}
+
+.content-div {
+  margin: 0 300px;
+  margin-top: 15vh;
+  background-color: var(--secondary-background);
+  color: var(--main-text);
+  border-radius: 20px;
+  padding: 20px;
+
+  transition-property: background-color color;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+
+  min-height: 185vh;
+  margin-bottom: 15px;
+  
+  z-index: 1;
+}
+
+@media (max-width: 1100px) {
+  .content-div {
+      margin: 0px;
+      border-radius: 0px;
+  }
 }
 
 @keyframes loading-animation {
@@ -76,6 +105,18 @@ a:hover {
 
   to {
     transform: translateY(0);
+  }
+}
+
+@keyframes top-to-bottom-and-opacity {
+  from {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 

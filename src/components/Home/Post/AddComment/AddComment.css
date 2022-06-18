@@ -1,0 +1,48 @@
+.add-comment {
+    margin: 30px 50px;
+    border: 2px #bbb solid;
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+
+    animation: top-to-bottom-and-opacity .5s ease-in-out forwards;
+}
+
+.write-comment {
+    font-size: large;
+    font-family: inherit;
+    color: inherit;
+    border: none;
+    outline: none;
+    width: 29vw;
+    resize: none;
+    overflow: hidden;
+    background-color: var(--secondary-background);
+}
+
+.form-comment {
+    display: flex;
+    align-items: center;
+}
+
+.comment-submit {
+    background-color: var(--main-blue);
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    font-size: large;
+    font-family: inherit;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: end;
+    border: 2px solid var(--main-blue);
+    transition: all .3s ease-in-out;
+
+    animation: 1s appears-opacity ease-in-out;
+}
+
+.comment-submit:hover {
+    background-color: var(--secondary-background);
+    color: var(--main-blue)
+}

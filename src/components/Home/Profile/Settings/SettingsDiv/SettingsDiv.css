@@ -28,8 +28,18 @@
 
 .settings-div .item {
     cursor: pointer;
+    padding: 5px 10px;
+    border: 2px solid #333;
+    border-radius: 20px;
+    background-color: var(--main-orange);
+    color: #333;
+    font-weight: normal;
+
+    transition: all .3s ease-in-out;
 }
 
 .settings-div .item:hover{
-    color: var(--main-text);
+    color: #fff;
+    background-color: #333;
+    border-radius: 20px;
 }

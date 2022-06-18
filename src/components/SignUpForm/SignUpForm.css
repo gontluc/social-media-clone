@@ -1,0 +1,154 @@
+#signup-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+#signup-form h1 {
+    color: var(--main-orange);
+    margin: 60px;
+}
+
+#signup-form p {
+    margin: 20px;
+}
+
+#comulle-logo-form {
+    max-width: 15vw;
+    transform: translateX(20%);
+    
+    transition: filter ease 1s;
+    filter: invert(var(--main-invert-logo));
+}
+
+#signup-form #form-div {
+    width: 40%;
+    height: 50%;
+    background-color: var(--secondary-background);
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px var(--main-shadow);
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    transition-timing-function: ease-in-out;
+    transition-duration: 1s;
+    transition-property: background-color color box-shadow;
+
+    transform: translateY(-150%);
+    animation: forwards 2s ease-in-out top-to-bottom;
+}
+
+#top-form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    transform: translateX(-100%);
+    animation: forwards 1.5s ease-in-out left-to-right;
+}
+
+#form-div form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.create-account {
+    margin: 20px;
+    padding: 10px;
+    color: #fff;
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid #333;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    cursor: pointer;
+    font-size: large;
+    font-family: inherit;
+
+    background-color: var(--main-blue);
+    border-color: var(--main-blue);
+}
+
+.create-account::before {
+    position: absolute;
+    content: '';
+    width: 100vw;
+    height: 100vw;
+    background-color: var(--secondary-background);
+    top: 250%;
+    right: 250%;
+    transform: rotate(45deg);
+    transition-duration: .9s;
+    transition-timing-function: ease;
+    transition-property: top right;
+    z-index: -1;
+}
+
+.create-account:hover::before{
+    top: -100%;
+    right: -100%;
+}
+
+.create-account:hover {
+    color: var(--main-blue);
+}
+
+#username-input {
+    font-family: inherit;
+    font-size: large;
+    outline: none;
+    border: var(--main-text) 2px solid;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 10px;
+    width: 90%;
+    background-color: var(--secondary-background);
+    color: var(--main-text);
+
+    transition: all 1s ease-in-out;
+}
+
+@media (max-width: 1100px) {
+    #signup-form #form-div {
+        width: 60%;
+    }
+}
+
+@media (max-width: 820px) {
+    #top-form {
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+
+    #top-form h1 {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    #signup-form #form-div {
+        width: 80%;
+    }
+
+    #signup-form {
+        font-size: 0.8em;
+    }
+
+    #top-form {
+        margin-top: 60px;
+        justify-content: start;
+    }
+}

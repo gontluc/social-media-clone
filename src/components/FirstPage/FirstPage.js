@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 
 
-const FirstPage = ({ SignIn }) => {
+const FirstPage = ({ SignIn, SignUp }) => {
   const [loadingFirstPage, setLoadingFirstPage] = useState(true)
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const FirstPage = ({ SignIn }) => {
           </div>
           <div id='box-div'>
               <SignIn />
-              <div className='link create'>Create new account</div>
+              <SignUp />
           </div>
       </div>
   )

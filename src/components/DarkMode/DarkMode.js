@@ -6,7 +6,7 @@ import {
   BsMoonFill as MoonFill 
 } from 'react-icons/bs'
 
-const DarkMode = ({ darkMode, onToggle, user }) => {
+const DarkMode = ({ darkMode, onToggle, user, newUser }) => {
 
   const modeActivated = () => {
     return (
@@ -27,7 +27,7 @@ const DarkMode = ({ darkMode, onToggle, user }) => {
   }
 
   return (
-    <div className={`dark-mode ${user && 'dark-mode-home'}`}>
+    <div className={`dark-mode${Boolean(user) & !newUser ? ' dark-mode-home' : ''}`}>
       {darkMode ? modeActivated() : modeDeactivated()}
     </div>
   )

@@ -1,0 +1,22 @@
+.comment-section {
+    margin: 0 50px;
+    animation: top-to-bottom-and-opacity .5s ease-in-out forwards;
+}
+
+.single-comment {
+    margin-top: 30px;
+    display: flex;
+}
+
+.comment-profile-img {
+    min-width: 80px;
+    width: 80px;
+    min-height: 80px;
+    height: 80px;
+    border-radius: 200px;
+    margin-right: 20px;
+}
+
+.comment {
+    margin-top: 15px;
+}

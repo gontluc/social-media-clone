@@ -5,7 +5,7 @@ const Friends = () => {
   return (
     <div className="friends-div">
       <div className="api-and-game">
-          <Clock />
+          {/* <Clock /> */}
           <div className="api-div">Weather API</div>
           <div className="game-div">Game</div>
       </div>

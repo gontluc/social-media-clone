@@ -20,6 +20,10 @@
 
 }
 
+.add-post:hover {
+    background-color: orangered;
+}
+
 .new-post-icon {
     transform: scale(200%);
 }
