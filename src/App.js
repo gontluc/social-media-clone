@@ -71,7 +71,6 @@ function App() {
       arrayUsers.push(user.userId)
     })
     setNewUser(!arrayUsers.includes(userId))
-    setNewUser(true)
   }
 
   /* Sign In Button */
@@ -112,6 +111,62 @@ function App() {
     )
   }
 
+  /* Adds new user to users collection --> firestore */
+  const uploadNewUser = (username) => {
+    const newUserData = {
+      username: '@' + username,
+      userId: user.uid,
+      photo: user.photoURL.toString().replace("s96-c","s300-c"),
+      name: user.displayName,
+      friends: [],
+      city: '',
+      status: 'online',
+      createdAt: new Date()
+    }
+
+    queryUsers.doc(user.uid).set(newUserData)
+  }
+
+  /* Get user.photo */
+  const getUserImg = (postUserId = user.uid) => {
+    const photo = []
+    users.map((userDoc) => {
+      userDoc.userId === postUserId && photo.push(userDoc.photo)
+    })
+
+    return (photo.length === 1 ? photo[0] : avatar)
+  }
+
+  /* Get user.name */
+  const getUserName = (postUserId = user.uid) => {
+    const name = []
+    users.map((userDoc) => {
+      userDoc.userId === postUserId && name.push(userDoc.name)
+    })
+
+    return (name.length === 1 ? name[0] : 'user_not_available')
+  }
+
+  /* Get user.username */
+  const getUserUsername = (postUserId = user.uid) => {
+    const username = []
+    users.map((userDoc) => {
+      userDoc.userId === postUserId && username.push(userDoc.username)
+    })
+
+    return (username.length === 1 ? username[0] : 'username_not_available')
+  }
+
+  /* Get user.status */
+  const getUserStatus = (userId = user.uid) => {
+    const status = []
+    users.map((userDoc) => {
+      userDoc.userId === userId && status.push(userDoc.status)
+    })
+
+    return (status.length === 1 ? status[0] : 'status_unavailable')
+  }
+
   /* firebase --> posts */
   function PostsContent() {
     /* Get Collection from firestore */
@@ -148,18 +203,15 @@ function App() {
           return ( <Post 
             key={post.postId} 
             post={post} 
-            profileImg={
-              post.userId === user.uid 
-                /* Get bigger img */
-                ? user.photoURL.toString().replace("s96-c","s300-c") 
-                : avatar/* remove this is misleading */
-            }
+            profileImg={getUserImg(post.userId)}
             userId={user.uid}
             changeLike={changeLike}
             postId={post.postId}
             currentUserImg={user.photoURL.toString().replace("s96-c","s300-c")}
             uploadComment={uploadComment}
             users={users}
+            name={getUserName(post.userId)}
+            username={getUserUsername(post.userId)}
           />)
         })}
       </div>
@@ -170,10 +222,17 @@ function App() {
     <>
       <DarkMode darkMode={darkMode} onToggle={onDarkModeToggle} user={user} newUser={newUser}/>
 
-      {user
+      {user 
         ? newUser 
-          ? <SignUpForm />
-          : <Home SignOut={SignOut} PostsContent={PostsContent} user={user}/>
+          ? <SignUpForm uploadNewUser={uploadNewUser}/>
+          : <Home 
+            SignOut={SignOut} 
+            PostsContent={PostsContent} 
+            user={user} 
+            name={users && getUserName()} 
+            username={users && getUserUsername()} 
+            status={users && getUserStatus()}
+          />
         : <FirstPage SignIn={SignIn} SignUp={SignUp}/>
       }
     </>

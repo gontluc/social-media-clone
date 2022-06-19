@@ -3,7 +3,7 @@ import './SignUpForm.css'
 import Loading from '../Loading/Loading';
 import comulleLogo from '../../images/logo.png'
 
-const SignUpForm = () => {
+const SignUpForm = ({ uploadNewUser }) => {
     const [loadingForm, setLoadingForm] = useState(true)
     const [username, setUsername] = useState('')
 
@@ -12,6 +12,12 @@ const SignUpForm = () => {
         setLoadingForm(false)
       }, 1100);
     }, [])
+
+    const createUser = async (e) => {
+      e.preventDefault()
+
+      uploadNewUser(username)
+    }
   
     return (
         loadingForm 
@@ -26,7 +32,7 @@ const SignUpForm = () => {
             </div>
             <div id='form-div'>
                 <p>Choose a username for you</p>
-                <form >{/* HEERERERERRERERERERRE */}
+                <form onSubmit={createUser}>
                     <input 
                         id='username-input'
                         spellCheck={false}

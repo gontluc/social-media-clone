@@ -6,7 +6,7 @@ import Friends from './Friends/Friends'
 import { useState, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 
-const Home = ({ SignOut, PostsContent, user }) => {
+const Home = ({ SignOut, PostsContent, user, name, username, status }) => {
   const [loadingHome, setLoadingHome] = useState(true)
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Home = ({ SignOut, PostsContent, user }) => {
 
           <AddPost />
 
-          <Profile SignOut={SignOut} user={user}/>
+          <Profile SignOut={SignOut} user={user} name={name} username={username} status={status}/>
         </>}
 
     </>

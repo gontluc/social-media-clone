@@ -6,7 +6,7 @@ import CommentSection from './CommentSection/CommentSection'
 import AddComment from './AddComment/AddComment'
 
 const Post = ({ 
-  postId, post, profileImg, userId, changeLike, currentUserImg, uploadComment, users 
+  postId, post, profileImg, userId, changeLike, currentUserImg, uploadComment, users, name, username
 }) => {
   const [like, setLike] = useState(false)
   const [commentSectionActive, setCommentSectionActive] = useState(false)
@@ -22,8 +22,8 @@ const Post = ({
 
           <div className='text-div'>
             <div className='name-username'>
-              <div className='name'>Name</div>
-              <div className='username'>Username</div>
+              <div className='name'>{name}</div>
+              <div className='username'>{username}</div>
             </div>
 
             <div className='post-text'>
