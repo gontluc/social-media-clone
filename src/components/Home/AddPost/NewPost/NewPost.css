@@ -23,15 +23,62 @@
     color: var(--main-text);
     border-radius: 20px;
     padding: 20px;
+}
 
+.top-new-post {
     display: flex;
     justify-content: space-between;
     align-items: start;
+    margin-bottom: 20px;
 }
 
 .close-icon {
     font-size: x-large;
     cursor: pointer;
+}
+
+.form-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-post textarea {
+    width: 100%;
+    font-size: large;
+    font-family: inherit;
+    color: inherit;
+    border: var(--main-text) 2px solid;
+    border-radius: 20px;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    background-color: var(--secondary-background);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.post-submit {
+    background-color: var(--main-blue);
+    padding: 5px 20px;
+    margin-right: 5px;
+    border: none;
+    font-size: large;
+    font-family: inherit;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 2px solid var(--main-blue);
+    transition: all .3s ease-in-out;
+
+    animation: 1s appears-opacity ease-in-out;
+}
+
+.post-submit:hover {
+    background-color: var(--secondary-background);
+    color: var(--main-blue)
 }
 
 @media (max-width: 900px) {

@@ -3,7 +3,7 @@ import { IoSettingsSharp as SettingsIcon} from 'react-icons/io5'
 import { useState } from 'react'
 import SettingsDiv from './SettingsDiv/SettingsDiv'
 
-const Settings = ({ SignOut }) => {
+const Settings = ({ SignOut, deleteUser }) => {
     const [hovering, setHovering] = useState(false)
     const [clickSettings, setClickSettings] = useState(false)
 
@@ -24,6 +24,7 @@ const Settings = ({ SignOut }) => {
           clickSettings={clickSettings} 
           setClickSettings={setClickSettings}
           SignOut={SignOut}
+          deleteUser={deleteUser}
         />
       }
     </div>

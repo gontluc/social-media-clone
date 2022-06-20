@@ -1,6 +1,4 @@
 import './CommentSection.css'
-import firebase from 'firebase/compat/app'
-import { useCollectionData } from 'react-firebase-hooks/firestore'
 
 const CommentSection = ({ arrayComments, users }) => {
 

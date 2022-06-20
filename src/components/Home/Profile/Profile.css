@@ -53,6 +53,15 @@
     border-radius: 200px;
 }
 
+.inactive {
+    content: '';
+    width: 15px;
+    margin: 10px;
+    height: 15px;
+    background-color: var(--main-text);
+    border-radius: 200px;
+}
+
 @media (max-width: 1100px) {
     .profile-div {
         display: none;

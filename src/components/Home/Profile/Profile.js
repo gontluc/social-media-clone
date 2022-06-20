@@ -1,7 +1,7 @@
 import './Profile.css'
 import Settings from './Settings/Settings'
 
-const Profile = ({ SignOut, user, name, username, status }) => {
+const Profile = ({ SignOut, user, name, username, status, deleteUser }) => {
   return (
     <div className="profile-div">
         <img 
@@ -20,7 +20,7 @@ const Profile = ({ SignOut, user, name, username, status }) => {
           <div className={status}></div>
         </div>
 
-        <Settings SignOut={SignOut}/>
+        <Settings SignOut={SignOut} deleteUser={deleteUser}/>
     </div>
   )
 }

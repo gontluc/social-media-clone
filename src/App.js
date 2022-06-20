@@ -62,6 +62,16 @@ function App() {
   const queryUsers = firebase.firestore().collection('users')
   const [users] = useCollectionData(queryUsers, {idField: 'id'})
 
+  /* Get Collection from firestore */
+  const postsRef = firestore.collection('posts')
+    
+  /* Query for ordered posts */
+  const queryPosts = postsRef.orderBy('createdAt', 'desc')
+
+  /* Use hook to listen to changes at anytime */
+  /* No documentation on how to get the firestore document id while mapping on useCollectionData hook on version 5, the idField was a version 4 feature*/
+  const [posts] = useCollectionData( queryPosts, {idField: 'id'})
+
   /* See if signed in user is a new user */
   const [newUser, setNewUser] = useState(false)
   
@@ -97,19 +107,15 @@ function App() {
     )
   }
 
+  /* Sign Out Button */
+  const SignOut = () => {
+    auth.currentUser && auth.signOut()
+  }
+
   /* Event listener when user is logged in with Google */
   useEffect(() => {
     user !== null && checkUser(user.uid)
   }, [user, SignIn, SignUp, SignOut])
-
-  /* Sign Out Button */
-  function SignOut() {
-    return ( auth.currentUser && 
-      <div onClick={() => auth.signOut()} className='item'>
-        Sign Out
-      </div>
-    )
-  }
 
   /* Adds new user to users collection --> firestore */
   const uploadNewUser = (username) => {
@@ -167,17 +173,58 @@ function App() {
     return (status.length === 1 ? status[0] : 'status_unavailable')
   }
 
+    /* Get user.createdAt */
+    const getUserCreatedAt = (userId = user.uid) => {
+      const date = []
+      users.map((userDoc) => {
+        userDoc.userId === userId && date.push(userDoc.createdAt)
+      })
+  
+      return (date.length === 1 ? date[0] : 'no_date_found')
+    }
+
+  /* Delete user -> Updates username --> username +'DELETED' */
+  const deleteUser = () => {
+    const created = getUserCreatedAt()
+
+    const updatedData = {
+      photo: '',
+      userId: user.uid + 'DELETED',
+      username: getUserUsername() + 'DELETED',
+      status: 'inactive',
+      name: user.displayName,
+      friends: [],
+      city: '',
+      createdAt: created,
+      deletedAt: new Date()
+    }
+
+    queryUsers.doc(user.uid + 'DELETED').set(updatedData)
+    queryUsers.doc(user.uid).delete()
+  }
+
+  /* Updates posts database --> firestore */
+  const uploadPost = (postText) => {
+    const timeNow = new Date()
+
+    const newPost = {
+      text: postText,
+      userId: user.uid,
+      createdAt: timeNow,
+      likedBy: [],
+      comments: [],
+      postId: ''
+    }
+
+    postsRef.add(newPost).then(postsRef.get().then(querySnapshot => querySnapshot.forEach(post => {
+      /* grab id to add postId */
+      post.data().createdAt.toDate().toString() === timeNow.toString() & post.data().userId === user.uid
+        && postsRef.doc(post.id).update({postId: post.id})
+    })))
+  }
+
   /* firebase --> posts */
   function PostsContent() {
-    /* Get Collection from firestore */
-    const postsRef = firestore.collection('posts')
-    
-    /* Query for ordered posts */
-    const queryPosts = postsRef.orderBy('createdAt', 'desc')
-
-    /* Use hook to listen to changes at anytime */
-    /* No documentation on how to get the firestore document id while mapping on useCollectionData hook on version 5, the idField was a version 4 feature*/
-    const [posts] = useCollectionData( queryPosts, {idField: 'id'})
     
     /* Updates likedBy database --> firestore */
     const changeLike = (userId, like, postId) => {
@@ -232,6 +279,8 @@ function App() {
             name={users && getUserName()} 
             username={users && getUserUsername()} 
             status={users && getUserStatus()}
+            deleteUser={deleteUser}
+            uploadPost={uploadPost}
           />
         : <FirstPage SignIn={SignIn} SignUp={SignUp}/>
       }

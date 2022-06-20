@@ -35,7 +35,7 @@ const Post = ({
                   }
 
                   <div className='number-likes'>
-                    {post.likedBy.length > 1 && post.likedBy.length - 1}
+                    {post.likedBy.length > 0 && post.likedBy.length}
                   </div>
 
                   <Comments 
@@ -44,7 +44,7 @@ const Post = ({
                   />
 
                   <div className='number-comments'>
-                    {post.comments.length > 1 && post.comments.length - 1}
+                    {post.comments.length > 0 && post.comments.length}
                   </div>
               </div>
             </div>
@@ -59,7 +59,7 @@ const Post = ({
         />}
 
         {commentSectionActive && <CommentSection 
-          arrayComments={post.comments.filter((value, index) => index !== 0)}
+          arrayComments={post.comments}
           users={users}
         />}
 

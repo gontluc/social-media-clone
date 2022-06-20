@@ -1,6 +1,6 @@
 import './SettingsDiv.css'
 
-const SettingsDiv = ({ clickSettings, setClickSettings, SignOut }) => {
+const SettingsDiv = ({ clickSettings, setClickSettings, SignOut, deleteUser }) => {
   return (
     <div 
       className='settings-parent-div'
@@ -9,9 +9,21 @@ const SettingsDiv = ({ clickSettings, setClickSettings, SignOut }) => {
       }}
     >
       <div className="settings-div">
-        <SignOut />
+        <div onClick={() => SignOut()} className='item'>
+          Sign Out
+        </div>
+
         <p className='item'>Delete post</p>
-        <p className='item'>Delete account</p>
+
+        <p 
+          className='item' 
+          onClick={() => {
+            deleteUser()
+            SignOut()
+          }}
+        >
+          Delete account
+        </p>
       </div>
     </div>
   )
