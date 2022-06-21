@@ -36,6 +36,7 @@
     min-height: 100px;
     height: 100px;
     border-radius: 200px;
+    cursor: pointer;
 }
 
 .text-div {

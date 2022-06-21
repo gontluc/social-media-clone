@@ -6,8 +6,15 @@ import Friends from './Friends/Friends'
 import { useState, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 
-const Home = ({ SignOut, PostsContent, user, name, username, status, deleteUser, uploadPost }) => {
+const Home = ({ 
+  SignOut, PostsContent, user, name, username, status, deleteUser, uploadPost, friends, getUserImg
+}) => {
   const [loadingHome, setLoadingHome] = useState(true)
+
+  /* 
+  Updates Profile div and PostsContent div when clicking on a profile img, name, or search bar result 
+  */
+ const [clickProfile, setClickProfile] = useState(undefined)
 
   useEffect(() => {
     setTimeout(() => {
@@ -15,12 +22,16 @@ const Home = ({ SignOut, PostsContent, user, name, username, status, deleteUser,
     }, 1100);
   }, [])
 
+  useEffect(() => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }, [clickProfile])
+
   return (
     <>
       {loadingHome
         ? <Loading />
         : <>
-          <Navbar />
+          <Navbar setClickProfile={setClickProfile}/>
 
           {/* To remove background content when scrolling */}
           <div className="invisible-div"></div>
@@ -30,9 +41,13 @@ const Home = ({ SignOut, PostsContent, user, name, username, status, deleteUser,
               Top Div
           </div>
 
-          <Friends />
+          <Friends friends={friends} setClickProfile={setClickProfile} getUserImg={getUserImg}/>
 
-          <PostsContent />
+          <PostsContent 
+            idUpdatePosts={clickProfile}
+            clickProfile={clickProfile}
+            setClickProfile={setClickProfile}
+          />
 
           <AddPost uploadPost={uploadPost}/>
 
@@ -43,6 +58,7 @@ const Home = ({ SignOut, PostsContent, user, name, username, status, deleteUser,
             username={username} 
             status={status} 
             deleteUser={deleteUser}
+            setClickProfile={setClickProfile}
           />
         </>}
 

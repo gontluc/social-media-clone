@@ -22,6 +22,7 @@
     border-radius: 200px;
     margin-top: 30px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .username {

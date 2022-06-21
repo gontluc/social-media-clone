@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './AddComment.css'
 
-const AddComment = ({ photoUrl, uploadComment, userId, postId }) => {
+const AddComment = ({ photoUrl, uploadComment, userId, postId, setClickProfile }) => {
   const [commentActive, setCommentActive] = useState(false)
   const [formInput, setFormInput] = useState('')
 
@@ -15,7 +15,7 @@ const AddComment = ({ photoUrl, uploadComment, userId, postId }) => {
 
   return (
     <div className="add-comment">
-        <img src={photoUrl} className='comment-profile-img' />
+        <img src={photoUrl} className='comment-profile-img' onClick={() => setClickProfile(userId)}/>
         <form 
           className='form-comment' 
           onSubmit={sendComment}

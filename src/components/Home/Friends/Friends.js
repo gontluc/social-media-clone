@@ -1,19 +1,27 @@
 import './Friends.css'
-import Clock from './Clock/Clock'
+/* import Clock from './Clock/Clock' */
 
-const Friends = () => {
+const Friends = ({ friends, setClickProfile, getUserImg }) => {
   return (
     <div className="friends-div">
       <div className="api-and-game">
           {/* <Clock /> */}
           <div className="api-div">Weather API</div>
-          <div className="game-div">Game</div>
+          {/* <div className="game-div">Game</div> */}
       </div>
 
       <div className="list-friends">
-          Friends
-          <div>Friend1</div>
-          <div>Friend2</div>
+          <p>Friends</p>
+          {friends && friends.map((friendId) => {
+            return (
+              <div 
+                key={friendId}
+                onClick={() => setClickProfile(friendId)}
+              >
+                <img src={getUserImg(friendId)} className='img-friends'/>
+              </div>
+            )
+          })}
       </div>
     </div>
   )

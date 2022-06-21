@@ -1,10 +1,10 @@
 import './CommentSection.css'
 
-const CommentSection = ({ arrayComments, users }) => {
+const CommentSection = ({ arrayComments, users, setClickProfile }) => {
 
-    function CommentUser({ username, name, photo, comment }) {
+    function CommentUser({ username, name, photo, comment, userId }) {
         return (<div className="single-comment">
-            <img src={photo} className="comment-profile-img"/>
+            <img src={photo} className="comment-profile-img" onClick={() => setClickProfile(userId)}/>
             <div>
                 <div className='name-username'>
                     <div className='name'>{name}</div>
@@ -33,6 +33,7 @@ const CommentSection = ({ arrayComments, users }) => {
                                 name={user.name}
                                 photo={user.photo}
                                 comment={element.commentText}
+                                userId={user.userId}
                             />
                         )
                     })}

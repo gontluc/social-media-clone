@@ -19,8 +19,30 @@
     margin-bottom: 30px;
 }
 
-.api-div {
+/* .api-div {
     margin: 30px 0;
+} */
+
+.list-friends {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-friends p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+}
+
+.img-friends {
+    min-width: 60px;
+    width: 60px;
+    min-height: 60px;
+    height: 60px;
+    border-radius: 200px;
+    cursor: pointer;
 }
 
 @media (max-width: 1100px) {

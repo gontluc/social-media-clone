@@ -68,10 +68,6 @@ function App() {
   /* Query for ordered posts */
   const queryPosts = postsRef.orderBy('createdAt', 'desc')
 
-  /* Use hook to listen to changes at anytime */
-  /* No documentation on how to get the firestore document id while mapping on useCollectionData hook on version 5, the idField was a version 4 feature*/
-  const [posts] = useCollectionData( queryPosts, {idField: 'id'})
-
   /* See if signed in user is a new user */
   const [newUser, setNewUser] = useState(false)
   
@@ -173,15 +169,30 @@ function App() {
     return (status.length === 1 ? status[0] : 'status_unavailable')
   }
 
-    /* Get user.createdAt */
-    const getUserCreatedAt = (userId = user.uid) => {
-      const date = []
-      users.map((userDoc) => {
-        userDoc.userId === userId && date.push(userDoc.createdAt)
-      })
-  
-      return (date.length === 1 ? date[0] : 'no_date_found')
+  /* Get user.createdAt */
+  const getUserCreatedAt = (userId = user.uid) => {
+    const date = []
+    users.map((userDoc) => {
+      userDoc.userId === userId && date.push(userDoc.createdAt)
+    })
+
+    return (date.length === 1 ? date[0] : 'no_date_found')
+  }
+
+  /* Get user.friends */
+  const getUserFriends = (userId = user.uid) => {
+    let friends = []
+
+    const getFriendsArray = (friendsArray) => {
+      friends = friendsArray
     }
+
+    users.map((userDoc) => {
+      userDoc.userId === userId && getFriendsArray(userDoc.friends)
+    })
+
+    return (friends)
+  }
 
   /* Delete user -> Updates username --> username +'DELETED' */
   const deleteUser = () => {
@@ -224,7 +235,11 @@ function App() {
   }
 
   /* firebase --> posts */
-  function PostsContent() {
+  function PostsContent({ idUpdatePosts = undefined, clickProfile, setClickProfile }) {
+
+  /* Use hook to listen to changes at anytime */
+  /* No documentation on how to get the firestore document id while mapping on useCollectionData hook on version 5, the idField was a version 4 feature*/
+  const [posts] = useCollectionData( queryPosts, {idField: 'id'})
     
     /* Updates likedBy database --> firestore */
     const changeLike = (userId, like, postId) => {
@@ -247,19 +262,41 @@ function App() {
     return (
       <div className='content-div'>
         {posts && posts.map((post) => {
-          return ( <Post 
-            key={post.postId} 
-            post={post} 
-            profileImg={getUserImg(post.userId)}
-            userId={user.uid}
-            changeLike={changeLike}
-            postId={post.postId}
-            currentUserImg={user.photoURL.toString().replace("s96-c","s300-c")}
-            uploadComment={uploadComment}
-            users={users}
-            name={getUserName(post.userId)}
-            username={getUserUsername(post.userId)}
-          />)
+          return ( !idUpdatePosts 
+            ? <Post 
+              key={post.postId} 
+              post={post} 
+              profileImg={getUserImg(post.userId)}
+              userId={user.uid}
+              changeLike={changeLike}
+              postId={post.postId}
+              currentUserImg={user.photoURL.toString().replace("s96-c","s300-c")}
+              uploadComment={uploadComment}
+              users={users}
+              name={getUserName(post.userId)}
+              username={getUserUsername(post.userId)}
+              postedBy={post.userId}
+              clickProfile={clickProfile}
+              setClickProfile={setClickProfile}
+            />
+            : idUpdatePosts === post.userId 
+              && <Post 
+                key={post.postId} 
+                post={post} 
+                profileImg={getUserImg(post.userId)}
+                userId={user.uid}
+                changeLike={changeLike}
+                postId={post.postId}
+                currentUserImg={user.photoURL.toString().replace("s96-c","s300-c")}
+                uploadComment={uploadComment}
+                users={users}
+                name={getUserName(post.userId)}
+                username={getUserUsername(post.userId)}
+                postedBy={post.userId}
+                clickProfile={clickProfile}
+                setClickProfile={setClickProfile}
+              />
+          )
         })}
       </div>
     )
@@ -273,14 +310,16 @@ function App() {
         ? newUser 
           ? <SignUpForm uploadNewUser={uploadNewUser}/>
           : <Home 
-            SignOut={SignOut} 
-            PostsContent={PostsContent} 
-            user={user} 
-            name={users && getUserName()} 
-            username={users && getUserUsername()} 
-            status={users && getUserStatus()}
-            deleteUser={deleteUser}
-            uploadPost={uploadPost}
+              SignOut={SignOut} 
+              PostsContent={PostsContent} 
+              user={user} 
+              name={users && getUserName()} 
+              username={users && getUserUsername()} 
+              status={users && getUserStatus()}
+              deleteUser={deleteUser}
+              uploadPost={uploadPost}
+              friends={users && getUserFriends()}
+              getUserImg={getUserImg}
           />
         : <FirstPage SignIn={SignIn} SignUp={SignUp}/>
       }

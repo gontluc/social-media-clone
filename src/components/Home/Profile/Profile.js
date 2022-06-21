@@ -1,7 +1,7 @@
 import './Profile.css'
 import Settings from './Settings/Settings'
 
-const Profile = ({ SignOut, user, name, username, status, deleteUser }) => {
+const Profile = ({ SignOut, user, name, username, status, deleteUser, setClickProfile }) => {
   return (
     <div className="profile-div">
         <img 
@@ -9,6 +9,7 @@ const Profile = ({ SignOut, user, name, username, status, deleteUser }) => {
           src={user.photoURL.toString().replace("s96-c","s300-c")} 
           alt="profile-pic" 
           className='profile-pic'
+          onClick={() => setClickProfile(user.uid)}
         />
 
         <div className='name'>{name}</div>

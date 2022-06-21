@@ -6,7 +6,7 @@ import CommentSection from './CommentSection/CommentSection'
 import AddComment from './AddComment/AddComment'
 
 const Post = ({ 
-  postId, post, profileImg, userId, changeLike, currentUserImg, uploadComment, users, name, username
+  postId, post, profileImg, userId, changeLike, currentUserImg, uploadComment, users, name, username, postedBy, clickProfile, setClickProfile
 }) => {
   const [like, setLike] = useState(false)
   const [commentSectionActive, setCommentSectionActive] = useState(false)
@@ -15,10 +15,18 @@ const Post = ({
     setLike(post.likedBy.includes(userId))
   },[post.likedBy, userId])
 
+  useEffect(() => {
+    commentSectionActive && setCommentSectionActive(!commentSectionActive)
+  },[clickProfile])
+
     return (
       <div className='post'>
         <div className='top-post'>
-          <img className='google-profile-img' src={profileImg} />
+          <img 
+            className='google-profile-img' 
+            src={profileImg} 
+            onClick={() => setClickProfile(postedBy)}
+          />
 
           <div className='text-div'>
             <div className='name-username'>
@@ -56,11 +64,13 @@ const Post = ({
           uploadComment={uploadComment}
           userId={userId}
           postId={postId}
+          setClickProfile={setClickProfile}
         />}
 
         {commentSectionActive && <CommentSection 
           arrayComments={post.comments}
           users={users}
+          setClickProfile={setClickProfile}
         />}
 
         {/* <div>PostImage</div> */}
