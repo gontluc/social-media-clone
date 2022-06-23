@@ -320,6 +320,8 @@ function App() {
               uploadPost={uploadPost}
               friends={users && getUserFriends()}
               getUserImg={getUserImg}
+              getUserName={getUserName}
+              getUserUsername={getUserUsername}
           />
         : <FirstPage SignIn={SignIn} SignUp={SignUp}/>
       }

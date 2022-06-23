@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 
 const Home = ({ 
-  SignOut, PostsContent, user, name, username, status, deleteUser, uploadPost, friends, getUserImg
+  SignOut, PostsContent, user, name, username, status, deleteUser, uploadPost, friends, getUserImg, getUserName, getUserUsername
 }) => {
   const [loadingHome, setLoadingHome] = useState(true)
 
@@ -31,7 +31,13 @@ const Home = ({
       {loadingHome
         ? <Loading />
         : <>
-          <Navbar setClickProfile={setClickProfile}/>
+          <Navbar 
+            setClickProfile={setClickProfile} 
+            friends={friends} 
+            getUserImg={getUserImg}
+            getUserName={getUserName}
+            getUserUsername={getUserUsername}
+          />
 
           {/* To remove background content when scrolling */}
           <div className="invisible-div"></div>

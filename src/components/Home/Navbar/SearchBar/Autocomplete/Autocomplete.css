@@ -6,7 +6,7 @@
     background-color: var(--secondary-background);
     color: var(--main-text);
     border: 2px var(--main-text) solid;
-    height: 50vh;
+    min-height: 50vh;
     border-radius: 20px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -20,9 +20,23 @@
 .autocomplete .item {
     margin: 15px;
     margin-bottom: 20px;
-    padding-bottom: 30px;
     border-radius: 20px;
+    padding: 10px 0;
     background-color: var(--main-background);
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: large;
+}
+
+.autocomplete .item img {
+    min-width: 60px;
+    width: 60px;
+    min-height: 60px;
+    height: 60px;
+    border-radius: 200px;
+    margin: 0 10px;
 }
 
 @media (max-width: 1100px) {

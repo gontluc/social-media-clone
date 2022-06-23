@@ -5,17 +5,23 @@ import { useState } from 'react'
 import Autocomplete from './Autocomplete/Autocomplete'
 import AutocompleteResponsive from './AutocompleteResponsive/AutocompleteResponsive'
 
-const SearchBar = () => {
+const SearchBar = ({ setClickProfile, friends, getUserImg, getUserName, getUserUsername }) => {
     const [activeSearch, setActiveSearch] = useState(false)
     const [activeAutocomplete, setActiveAutocomplete] = useState(false)
+    const [searchFriend, setSearchFriend] = useState('')
 
     const clickWithBigWidth = () => {
+
+        const doNothing = (e) => {
+            e.preventDefault()
+        }
+
         return (
             <div className={
                 `search-active-div ${activeAutocomplete && 'search-active-div-autocomplete'}`
             }>
                 <SearchIconActive className='search-active'/>
-                <form action="">
+                <form onSubmit={(e) => doNothing(e)}>
                     <input 
                         type="text" 
                         placeholder='Search friend' 
@@ -26,6 +32,7 @@ const SearchBar = () => {
                             !activeAutocomplete | !e.target.value
                                 && setActiveAutocomplete(!activeAutocomplete)
                         }}
+                        onChange={(e) => setSearchFriend(e.target.value)}
                     />
                 </form>
                 {activeAutocomplete && <Autocomplete 
@@ -69,12 +76,36 @@ const SearchBar = () => {
     }
     
     const autocompleteResults = () => {
+        let counterResults = 0
+
         return (
-        <>
-          <div className='item'>Autocomplete1</div>
-          <div className='item'>Autocomplete2</div>
-          <div className='item'>Autocomplete3</div>
-        </>
+            friends.map((friend) => {
+                getUserName(friend).toLowerCase().includes(searchFriend.toLowerCase())  
+                | getUserUsername(friend).toLowerCase().includes(searchFriend.toLowerCase())
+                    && counterResults++
+                return (
+                    counterResults <= 4 &
+                    (getUserName(friend).toLowerCase().includes(searchFriend.toLowerCase())  
+                    | getUserUsername(friend).toLowerCase().includes(searchFriend.toLowerCase()))
+                        ? <div 
+                            className='item' 
+                            key={friend} 
+                            onClick={() => {
+                                setClickProfile(friend)
+                                setActiveSearch(false)
+                                setActiveAutocomplete(false)
+                                setSearchFriend('')
+                            }}
+                        >
+                            <img src={getUserImg(friend)} />
+                            <div>
+                                <div>{getUserName(friend)}</div>
+                                <div className='username'>{getUserUsername(friend)}</div>
+                            </div>
+                        </div>
+                        : <div></div>
+                )
+            })
         )
     }
 

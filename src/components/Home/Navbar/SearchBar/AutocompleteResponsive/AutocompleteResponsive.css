@@ -13,9 +13,23 @@
 
 .autocomplete-responsive .item {
     margin: 20px;
-    padding-bottom: 30px;
+    padding: 10px 0px;
     border-radius: 20px;
     background-color: var(--secondary-background);
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: large;
+}
+
+.autocomplete-responsive .item img {
+    min-width: 60px;
+    width: 60px;
+    min-height: 60px;
+    height: 60px;
+    border-radius: 200px;
+    margin: 0 10px;
 }
 
 .searchbar-autocomplete {
