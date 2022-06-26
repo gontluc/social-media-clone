@@ -3,9 +3,11 @@ import { FaHome as HomeIcon } from 'react-icons/fa'
 import navLogo from '../../../images/logo.png'
 import SearchBar from './SearchBar/SearchBar'
 
-const Navbar = ({ setClickProfile, friends, getUserImg, getUserName, getUserUsername }) => {
+const Navbar = ({ 
+  setClickProfile, allUsers, getUserImg, getUserName, getUserUsername, setDeletingPost 
+}) => {
   return (
-    <div className="navbar">
+    <div className="navbar" onClick={() => setDeletingPost(false)}>
         <img src={navLogo} alt="logo" id='nav-logo'/>
 
         <HomeIcon 
@@ -18,7 +20,7 @@ const Navbar = ({ setClickProfile, friends, getUserImg, getUserName, getUserUser
         
         <SearchBar 
           setClickProfile={setClickProfile}
-          friends={friends} 
+          allUsers={allUsers} 
           getUserImg={getUserImg}
           getUserName={getUserName}
           getUserUsername={getUserUsername}

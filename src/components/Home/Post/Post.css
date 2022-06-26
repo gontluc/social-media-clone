@@ -11,9 +11,32 @@
     display: flex;
     flex-direction: column;
     font-size: large;
+    position: relative;
 
     padding: 40px 0;
     border-bottom: 1px #bbb solid;
+}
+
+.delete-post-icon {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    font-size: x-large;
+    color: red;
+    cursor: pointer;
+}
+
+.post:first-child .delete-post-icon{
+    right: 10px;
+    top: 10px;
+}
+
+.delete-post-icon:hover {
+    transform: scale(90%);
+}
+
+.delete-post-icon:active {
+    transform: scale(70%);
 }
 
 .top-post {

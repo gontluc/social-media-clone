@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 import Loading from '../Loading/Loading'
 
 const Home = ({ 
-  SignOut, PostsContent, user, name, username, status, deleteUser, uploadPost, friends, getUserImg, getUserName, getUserUsername
+  allUsers, SignOut, PostsContent, user, deleteUser, uploadPost, friends, getUserImg, getUserName, getUserUsername, getUserStatus, changeFriend, setDeletingPost
 }) => {
   const [loadingHome, setLoadingHome] = useState(true)
 
@@ -33,10 +33,11 @@ const Home = ({
         : <>
           <Navbar 
             setClickProfile={setClickProfile} 
-            friends={friends} 
+            allUsers={allUsers} 
             getUserImg={getUserImg}
             getUserName={getUserName}
             getUserUsername={getUserUsername}
+            setDeletingPost={setDeletingPost}
           />
 
           {/* To remove background content when scrolling */}
@@ -47,7 +48,12 @@ const Home = ({
               Top Div
           </div>
 
-          <Friends friends={friends} setClickProfile={setClickProfile} getUserImg={getUserImg}/>
+          <Friends 
+            friends={friends} 
+            setClickProfile={setClickProfile} 
+            getUserImg={getUserImg}
+            setDeletingPost={setDeletingPost}
+          />
 
           <PostsContent 
             idUpdatePosts={clickProfile}
@@ -55,16 +61,24 @@ const Home = ({
             setClickProfile={setClickProfile}
           />
 
-          <AddPost uploadPost={uploadPost}/>
+          <AddPost 
+            uploadPost={uploadPost}
+            setDeletingPost={setDeletingPost}
+          />
 
           <Profile 
             SignOut={SignOut} 
             user={user} 
-            name={name} 
-            username={username} 
-            status={status} 
+            name={getUserName(clickProfile)} 
+            username={getUserUsername(clickProfile)} 
+            status={getUserStatus(clickProfile)}
+            image={getUserImg(clickProfile)} 
             deleteUser={deleteUser}
+            clickProfile={clickProfile}
             setClickProfile={setClickProfile}
+            changeFriend={changeFriend}
+            friends={friends}
+            setDeletingPost={setDeletingPost}
           />
         </>}
 

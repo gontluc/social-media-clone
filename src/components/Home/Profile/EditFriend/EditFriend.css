@@ -1,0 +1,35 @@
+.edit-friend {
+    margin-top: 30px;
+}
+
+.button-add-friend {
+    font-size: large;
+    padding: 5px 20px;
+    border: 2px solid var(--main-blue);
+    background-color: var(--secondary-background);
+    color: var(--main-blue);
+    border-radius: 20px;
+    transition: .3s ease-in-out all;
+    cursor: pointer;
+}
+
+.button-add-friend:hover {
+    color: #fff;
+    background-color: var(--main-blue);
+}
+
+.button-remove-friend {
+    font-size: large;
+    padding: 5px 20px;
+    border: 2px solid red;
+    background-color: var(--secondary-background);
+    color: red;
+    border-radius: 20px;
+    transition: .3s ease-in-out all;
+    cursor: pointer;
+}
+
+.button-remove-friend:hover {
+    color: #fff;
+    background-color: red;
+}

@@ -27,7 +27,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    font-size: large;
+    font-size: small;
 }
 
 .autocomplete .item img {

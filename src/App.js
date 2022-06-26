@@ -4,7 +4,7 @@ import FirstPage from "./components/FirstPage/FirstPage";
 import DarkMode from './components/DarkMode/DarkMode';
 import Home from './components/Home/Home';
 import Post from './components/Home/Post/Post';
-import avatar from './images/logo.png'
+/* import avatar from './images/logo.png' */
 import SignUpForm from './components/SignUpForm/SignUpForm';
 
 /* Firebase SDK (Software Development Kit) */
@@ -62,6 +62,15 @@ function App() {
   const queryUsers = firebase.firestore().collection('users')
   const [users] = useCollectionData(queryUsers, {idField: 'id'})
 
+  /* Get all users */
+  const allUsers = () => {
+    const allUsersArray = []
+    users.map((user) => 
+      allUsersArray.push(user.userId)
+    )
+    return ( allUsersArray )
+  }
+
   /* Get Collection from firestore */
   const postsRef = firestore.collection('posts')
     
@@ -78,6 +87,9 @@ function App() {
     })
     setNewUser(!arrayUsers.includes(userId))
   }
+
+  /* Activate delete post feature */
+  const [deletingPost, setDeletingPost] = useState(false)
 
   /* Sign In Button */
   function SignIn() {
@@ -120,7 +132,14 @@ function App() {
       userId: user.uid,
       photo: user.photoURL.toString().replace("s96-c","s300-c"),
       name: user.displayName,
-      friends: [],
+      friends: [
+        'A5ooSPPFjme2v206XYBT6ZUghPr1',
+        'HcXvHVTifSJCdLap92iL',
+        'P5bQndlGUGCcwr4NgdeL',
+        'S6U7AYVrrIjE32P4QTCH',
+        'h5R05I6IGXQcFakgg7y6FT9IJdD2',
+        '5gSlkYeKRJeBllfkckUKMi7cA5p2'
+      ],
       city: '',
       status: 'online',
       createdAt: new Date()
@@ -136,7 +155,7 @@ function App() {
       userDoc.userId === postUserId && photo.push(userDoc.photo)
     })
 
-    return (photo.length === 1 ? photo[0] : avatar)
+    return (photo.length === 1 && photo[0])
   }
 
   /* Get user.name */
@@ -234,12 +253,34 @@ function App() {
     })))
   }
 
+  /* Deletes post database --> firestore */
+  const deletePost = (postId) => {
+    postsRef.doc(postId).delete()
+  }
+
+  /* Updates friends database --> firestore */
+  /* AddFriend = false --> remove friend */
+  const changeFriend = (userId, friendId, addFriend) => {
+    queryUsers.doc(userId).update({
+      friends: addFriend ? arrayUnion(friendId) : arrayRemove(friendId)
+    })
+
+    queryUsers.doc(friendId).update({
+      friends: addFriend ? arrayUnion(userId) : arrayRemove(userId)
+    })
+  }
+
   /* firebase --> posts */
   function PostsContent({ idUpdatePosts = undefined, clickProfile, setClickProfile }) {
 
-  /* Use hook to listen to changes at anytime */
-  /* No documentation on how to get the firestore document id while mapping on useCollectionData hook on version 5, the idField was a version 4 feature*/
-  const [posts] = useCollectionData( queryPosts, {idField: 'id'})
+    /* Use hook to listen to changes at anytime */
+    /* No documentation on how to get the firestore document id while mapping on useCollectionData hook on version 5, the idField was a version 4 feature*/
+    const [posts] = useCollectionData( queryPosts, {idField: 'id'})
+
+    /* Updates content while clicking DELETE POST */
+    useEffect(() => {
+      deletingPost && setClickProfile(user.uid)
+    },[setDeletingPost])
     
     /* Updates likedBy database --> firestore */
     const changeLike = (userId, like, postId) => {
@@ -258,11 +299,29 @@ function App() {
         comments: arrayUnion(newComment)
       })
     }
-    
+
+    /* Infinite scrolling, loading 5 posts at a time */
+   /*  const [numberPostsLoaded, setNumberPostsLoaded] = useState(5)
+
+    const setWaitFalse = () => {
+      setNumberPostsLoaded(numberPostsLoaded + 5)
+    }
+       
+    window.addEventListener('scroll', () => {
+      window.scrollY + window.innerHeight == document.body.scrollHeight
+        && console.log(document.body.scrollY, document.body.scrollHeight)
+        && setWaitFalse()
+
+      console.log(document.body.scrollY, document.body.scrollHeight)
+    }) */
+
     return (
       <div className='content-div'>
         {posts && posts.map((post) => {
-          return ( !idUpdatePosts 
+          return ( 
+            !idUpdatePosts 
+            & (getUserFriends().includes(post.userId) | post.userId === user.uid) 
+
             ? <Post 
               key={post.postId} 
               post={post} 
@@ -278,6 +337,9 @@ function App() {
               postedBy={post.userId}
               clickProfile={clickProfile}
               setClickProfile={setClickProfile}
+              deletingPost={deletingPost}
+              setDeletingPost={setDeletingPost}
+              deletePost={deletePost}
             />
             : idUpdatePosts === post.userId 
               && <Post 
@@ -295,6 +357,9 @@ function App() {
                 postedBy={post.userId}
                 clickProfile={clickProfile}
                 setClickProfile={setClickProfile}
+                deletingPost={deletingPost}
+                setDeletingPost={setDeletingPost}
+                deletePost={deletePost}
               />
           )
         })}
@@ -310,18 +375,19 @@ function App() {
         ? newUser 
           ? <SignUpForm uploadNewUser={uploadNewUser}/>
           : <Home 
+              allUsers={users && allUsers()}
               SignOut={SignOut} 
               PostsContent={PostsContent} 
-              user={user} 
-              name={users && getUserName()} 
-              username={users && getUserUsername()} 
-              status={users && getUserStatus()}
+              user={user}
               deleteUser={deleteUser}
               uploadPost={uploadPost}
               friends={users && getUserFriends()}
               getUserImg={getUserImg}
               getUserName={getUserName}
               getUserUsername={getUserUsername}
+              getUserStatus={getUserStatus}
+              changeFriend={changeFriend}
+              setDeletingPost={setDeletingPost}
           />
         : <FirstPage SignIn={SignIn} SignUp={SignUp}/>
       }

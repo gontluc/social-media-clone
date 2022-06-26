@@ -45,6 +45,16 @@
     cursor: pointer;
 }
 
+.items-friends {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item-friend {
+    margin: 5px;
+}
+
 @media (max-width: 1100px) {
     .friends-div {
         display: none;

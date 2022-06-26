@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react'
 import { FaComments as Comments } from 'react-icons/fa'
 import CommentSection from './CommentSection/CommentSection'
 import AddComment from './AddComment/AddComment'
+import { FaTimes as DeleteIcon } from 'react-icons/fa'
 
 const Post = ({ 
-  postId, post, profileImg, userId, changeLike, currentUserImg, uploadComment, users, name, username, postedBy, clickProfile, setClickProfile
+  postId, post, profileImg, userId, changeLike, currentUserImg, uploadComment, users, name, username, postedBy, clickProfile, setClickProfile, deletingPost, setDeletingPost, deletePost
 }) => {
   const [like, setLike] = useState(false)
   const [commentSectionActive, setCommentSectionActive] = useState(false)
@@ -74,6 +75,11 @@ const Post = ({
         />}
 
         {/* <div>PostImage</div> */}
+
+        {deletingPost && <DeleteIcon className='delete-post-icon' onClick={() => {
+          deletePost(postId)
+          setDeletingPost(false)
+        }}/>}
 
       </div>
     )

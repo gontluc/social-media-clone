@@ -26,6 +26,23 @@
     flex-direction: column;
 }
 
+.settings-div2 {
+    position: fixed;
+    top: 340px;
+    left: 15px;
+    width: 20vw;
+    height: 200px;
+    background-color: var(--main-orange);
+    color: var(--secondary-background);
+    border-radius: 20px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
 .settings-div .item {
     cursor: pointer;
     padding: 5px 10px;

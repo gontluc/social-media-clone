@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Autocomplete from './Autocomplete/Autocomplete'
 import AutocompleteResponsive from './AutocompleteResponsive/AutocompleteResponsive'
 
-const SearchBar = ({ setClickProfile, friends, getUserImg, getUserName, getUserUsername }) => {
+const SearchBar = ({ setClickProfile, allUsers, getUserImg, getUserName, getUserUsername }) => {
     const [activeSearch, setActiveSearch] = useState(false)
     const [activeAutocomplete, setActiveAutocomplete] = useState(false)
     const [searchFriend, setSearchFriend] = useState('')
@@ -79,31 +79,33 @@ const SearchBar = ({ setClickProfile, friends, getUserImg, getUserName, getUserU
         let counterResults = 0
 
         return (
-            friends.map((friend) => {
-                getUserName(friend).toLowerCase().includes(searchFriend.toLowerCase())  
-                | getUserUsername(friend).toLowerCase().includes(searchFriend.toLowerCase())
+            allUsers.map((user) => {
+                const id = Math.floor(Math.random() * 1000) + 1
+
+                getUserName(user).toLowerCase().includes(searchFriend.toLowerCase())  
+                | getUserUsername(user).toLowerCase().includes(searchFriend.toLowerCase())
                     && counterResults++
                 return (
                     counterResults <= 4 &
-                    (getUserName(friend).toLowerCase().includes(searchFriend.toLowerCase())  
-                    | getUserUsername(friend).toLowerCase().includes(searchFriend.toLowerCase()))
+                    (getUserName(user).toLowerCase().includes(searchFriend.toLowerCase())  
+                    | getUserUsername(user).toLowerCase().includes(searchFriend.toLowerCase()))
                         ? <div 
                             className='item' 
-                            key={friend} 
+                            key={user} 
                             onClick={() => {
-                                setClickProfile(friend)
+                                setClickProfile(user)
                                 setActiveSearch(false)
                                 setActiveAutocomplete(false)
                                 setSearchFriend('')
                             }}
                         >
-                            <img src={getUserImg(friend)} />
+                            <img src={getUserImg(user)} />
                             <div>
-                                <div>{getUserName(friend)}</div>
-                                <div className='username'>{getUserUsername(friend)}</div>
+                                <div>{getUserName(user)}</div>
+                                <div className='username'>{getUserUsername(user)}</div>
                             </div>
                         </div>
-                        : <div></div>
+                        : <div key={id}></div>
                 )
             })
         )
