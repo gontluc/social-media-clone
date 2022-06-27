@@ -64,6 +64,6 @@ useCollectionData()
 
 <br />
 
-## Backend
+## Database
 
 Firebase --> Cloud Firestore
